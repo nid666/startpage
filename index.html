@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
+
     <title>Home</title>
     <link rel="stylesheet" href="styles.css">
     <link href="favicon.png" rel="shortcut icon" type="image/x-icon" />
@@ -24,31 +24,34 @@
         </div>
         <div class="bookmark-container">
             <div class="bookmark-set">
-                <div class="bookmark-title">Daily</div>
+                <div class="bookmark-title">School</div>
                 <div class="bookmark-inner-container">
                     <a class="bookmark" href="https://inbox.google.com/" target="_blank">Inbox</a>
-                    <a class="bookmark" href="https://github.com/" target="_blank">Github</a>
+                    <a class="bookmark" href="https://spprep.instructure.com/?login_success=1" target="_blank">Canvas</a>
                     <a class="bookmark" href="https://drive.google.com/" target="_blank">Drive</a>
+                    <a class="bookmark" href="https://keep.google.com/" target="_blank">Keep</a>
+                    <a class="bookmark" href="https://translate.google.com/" target="_blank">Translate</a>
+
                 </div>
             </div>
             <div class="bookmark-set">
-                <div class="bookmark-title">Media</div>
+                <div class="bookmark-title">Time Waster</div>
                 <div class="bookmark-inner-container">
                     <a class="bookmark" href="https://youtube.com" target="_blank">Youtube</a>
-                    <a class="bookmark" href="https://netflix.com" target="_blank">Netflix</a>
-                    <a class="bookmark" href="https://crunchyroll.com" target="_blank">Crunchyroll</a>
+                    <a class="bookmark" href="https://old.reddit.com" target="_blank">Netflix</a>
+                    <a class="bookmark" href="https://twitter.com" target="_blank">Crunchyroll</a>
                     <a class="bookmark" href="https://" target="_blank">Amazon Prime</a>
                 </div>
             </div>
             <div class="bookmark-set">
-            <div class="bookmark-title">Reddit</div>
+            <div class="bookmark-title">Tools</div>
                 <div class="bookmark-inner-container">
-                    <a class="bookmark" href="https://reddit.com/r/overwatch" target="_blank">/r/overwatch</a>
+                    <a class="bookmark" href="https://github.com" target="_blank">/r/overwatch</a>
                     <a class="bookmark" href="https://reddit.com/r/pcmasterrace" target="_blank">/r/pcmasterrace</a>
                     <a class="bookmark" href="https://reddit.com/r/me_irl" target="_blank">/r/me_irl</a>
                     <a class="bookmark" href="https://reddit.com/r/battlestations" target="_blank">/r/battlestations</a>
                     <a class="bookmark" href="https://reddit.com/r/unixporn" target="_blank">/r/unixporn</a>
-                    
+
                     <a class="bookmark" href="https://reddit.com/r/news" target="_blank">/r/news</a>
                 </div>
             </div>
@@ -77,9 +80,9 @@
                 sec = date.getSeconds(),
                 hour = date.getHours();
 
-            return "" + 
-                (hour < 10 ? ("0" + hour) : hour) + ":" + 
-                (min < 10 ? ("0" + min) : min) + ":" + 
+            return "" +
+                (hour < 10 ? ("0" + hour) : hour) + ":" +
+                (min < 10 ? ("0" + min) : min) + ":" +
                 (sec < 10 ? ("0" + sec) : sec);
         }
 
