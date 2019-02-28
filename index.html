@@ -28,7 +28,7 @@
             <div class="bookmark-set">
                 <div class="bookmark-title">Google</div>
                 <div class="bookmark-inner-container">
-                    <a class="bookmark" href="https://inbox.google.com/" target="_blank">Prep Mail</a>
+                    <a class="bookmark" href="https://mail.google.com/mail/" target="_blank">Gmail</a>
                     <a class="bookmark" href="https://drive.google.com/" target="_blank">Drive</a>
                     <a class="bookmark" href="https://keep.google.com/" target="_blank">Keep</a>
                 </div>
@@ -38,7 +38,7 @@
                 <div class="bookmark-title">Study</div>
                 <div class="bookmark-inner-container">
                     <a class="bookmark" href="http://libguides.spprep.org/c.php?g=630301" target="_blank">Library</a>
-                    <a class="bookmark" href="https://www.google.com/" target="_blank">Textbook Library</a>
+                    <a class="bookmark" href="https://www.google.com/" target="_blank">Textbook Directory</a>
                     <a class="bookmark" href="https://quizlet.com/" target="_blank">Quizlet</a>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                 <div class="bookmark-inner-container">
                     <a class="bookmark" href="https://accounts.google.com/o/saml2/initsso?idpid=C04abkbep&spid=58097645075&forceauthn=false1" target="_blank">Canvas</a>
                     <a class="bookmark" href="https://spprep.schoology.com" target="_blank">Schoology</a>
-                    <a class="bookmark" href="https://spprep.powerschool.com/" target="_blank">Power School</a>
+                    <a class="bookmark" href="https://spprep.powerschool.com/" target="_blank">Powerschool</a>
                 </div>
             </div>
 
@@ -83,6 +83,22 @@
                 (min < 10 ? ("0" + min) : min) + ":" +
                 (sec < 10 ? ("0" + sec) : sec);
         }
+
+        // Get URL for daily announcements (thanks mr. butrym)
+        // Slightly flawed because it will only work if prep uploads them for that day
+        // Idea: add a email bot to morris's announcements emails that takes the .docx file and uploads it when its sent
+        function getAnnouncments() {
+          var currentdate = new Date();
+          var day = currentdate.getDate().toString();
+          var month = (currentdate.getMonth() + 1).toString();
+          month = ("000" + month).slice(-2);
+          day = ("000" + day).slice(-2);
+          return "http://intranet.spprep.org/calendar/announcements/"+currentdate.getFullYear()+"-"+month+"-"+day+".html";
+        }
+
+        // Calender implementation to get the letter day from prep calender (research in progress)
+
+
 
         window.onload = () => {
             let xhr = new XMLHttpRequest();
