@@ -6,7 +6,7 @@
 - Google Keep
 
 # Study
-- Library Reasources
+- Library Resources - A seperate page
 - Textbook Library
 - Quizlet
 
