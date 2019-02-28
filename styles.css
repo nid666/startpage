@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=ZCOOL+QingKe+HuangYou');
 
 body {
-    background-color: #872434;
+    background-color: #742836;
     margin: 0px;
 }
 
@@ -100,9 +100,7 @@ body {
     margin: 0em .5em;
 }
 .bookmark-inner-container {
-    overflow-y: scroll;
-    height: 80%;
-    vertical-align: top;
+
 }
 .bookmark-title {
     font-size: 1.1rem;
