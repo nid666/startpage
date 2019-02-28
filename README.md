@@ -6,8 +6,8 @@
 - Google Keep
 
 # Study
-- Library Resources - A seperate page
-- Textbook Library
+- Library Resources
+- Textbook Library - Needs its own page
 - Quizlet
 
 # Tools
@@ -16,6 +16,6 @@
 - Powerschool
 
 # Other
-- Translate
+- Bell Schedule
 - Prep Wesbite
 - Naviance
