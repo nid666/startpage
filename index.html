@@ -86,7 +86,7 @@
             return "" +
                 //this very bad 24 to 12 hour converter needs to be fixed and a 0 needs to be added to numbers less than 10
                 //(hr < 10 ? ("0" + hour) : hour) + ":" +
-                (hr) + ":" +
+                (hr < 10 ? ("0" + hr) : hr) + ":" +
                 (min < 10 ? ("0" + min) : min) + ":" +
                 (sec < 10 ? ("0" + sec) : sec);
         }
