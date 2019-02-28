@@ -1,4 +1,21 @@
-# [Homepage](https://danggoodcode.com/startpage)
-Homepage avaliable for use now at danggoodcode.com/startpage
+# Link Items
 
-![homepage](https://i.redd.it/cbnzq36zj3601.gif)
+# Google
+- Gmail
+- Drive
+- Google Keep
+
+# Study
+- Library Reasources
+- Textbook Library
+- Quizlet
+
+# Tools
+- Canvas
+- Schoology
+- Powerschool
+
+# Other
+- Translate
+- Prep Wesbite
+- Naviance
