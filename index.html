@@ -95,7 +95,7 @@
         // Get URL for daily announcements (thanks mr. butrym)
         // Slightly flawed because it will only work if prep uploads them for that day
         // Idea: add a email bot to morris's announcements emails that takes the .docx file and uploads it when its sent
-        function getAnnouncments() {
+        function getAnnouncements() {
           var currentdate = new Date();
           var day = currentdate.getDate().toString();
           var month = (currentdate.getMonth() + 1).toString();
@@ -104,8 +104,25 @@
           return "http://intranet.spprep.org/calendar/announcements/"+currentdate.getFullYear()+"-"+month+"-"+day+".html";
         }
 
-        // Calender implementation to get the letter day from prep calender (research in progress)
+        // Get the letter day from prep calender
+        // Use Samay's implementation from Prep App!
+        function getCalenderEventsURL() {
+          let calenderURL = "https://www.googleapis.com/calendar/v3/calendars/144grand@gmail.com/events?key=AIzaSyCwrVw53CGqcgOrfX0Sc-0bbsrBMCJKg_o";
+          let today = new Date();
+          let calender_date = this.formatDate(today);
+          return (calendarURL + "&timeMin=" + calender_date + "T10:00:00-07:00&timeMax=" + calender_date + "T10:00:00-09:00");
+        }
 
+        // Thanks Samay!
+        function fetchCalendarEvents() {
+          return fetch(this.getCalendarEventsURL())
+          .then(response => response.json())
+          .then(responseJson => {
+            var today = responseJson.items[0].summary;
+            today = today.toString();
+            today = this.setState({ today });
+          });
+        }
 
 
         window.onload = () => {
