@@ -19,3 +19,10 @@
 - Bell Schedule
 - Prep Wesbite
 - Naviance
+
+
+# Ideas
+- Prep sports schedule?
+- Possibly social media, probably not needed
+- Map that shows places where people can go to eat by class year
+- Custom snow day calculator
