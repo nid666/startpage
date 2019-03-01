@@ -152,7 +152,7 @@
         }
 
         document.addEventListener("keydown", event => {
-            if (event.keyCode == 32) {          // Spacebar code to open search
+            if (event.keyCode != 27) {
                 document.getElementById('search').style.display = 'flex';
                 document.getElementById('search-field').focus();
             } else if (event.keyCode == 27) {   // Esc to close search
