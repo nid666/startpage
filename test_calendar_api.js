@@ -1,10 +1,4 @@
-<!-- JQuery -->
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-   <script type="text/javascript">
-
-     // Your Client ID can be retrieved from your project in the Google
-     // Developer Console, https://console.developers.google.com
      var CLIENT_ID = '';
      var API_KEY = 'AIzaSyB9PFu0aUoTHjQqOcUluglt8S2gmB62vP8'
      var CAL_ID = 'https://calendar.google.com/calendar/embed?title=Saint+Peter%27s+Prep+Calendar&height=600&wkst=1&bgcolor=%23FFFFFF&src=144grand@gmail.com&color=%23A32929&src=j2u1oqdhka8e0v1o4p5t6avcjk@group.calendar.google.com&color=%236E6E41&src=j62aodeshq58d2u3la7pi9b8os@group.calendar.google.com&color=%230D7813&src=4pjksvuk9if0th7fa6tp1ainoo@group.calendar.google.com&color=%2329527A&ctz=America/New_York'
@@ -34,7 +28,6 @@
          'maxResults': 10,
          'orderBy': 'startTime'
        });
-
        request.execute(function(resp) {
          var events = resp.items;
          appendPre('Upcoming events:');
@@ -54,19 +47,3 @@
 
        });
      }
-
-     /**
-      * Append a pre element to the body containing the given message
-      * as its text node.
-      *
-      * @param {string} message Text to be placed in pre element.
-      */
-     function appendPre(message) {
-       var pre = document.getElementById('output');
-       var textContent = document.createTextNode(message + '\n');
-       pre.appendChild(textContent);
-     }
-
-   </script>
-   <script src="https://apis.google.com/js/client.js?onload=loadCalendarApi">
-   </script>
