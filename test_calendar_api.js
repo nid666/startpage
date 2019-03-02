@@ -1,133 +1,72 @@
-var clientId = 'YOUR_CLIENT_ID HERE'; //choose web app client Id, redirect URI and Javascript origin set to http://localhost
-var apiKey = 'YOUR_APIKEY_HERE'; //choose public apiKey, any IP allowed (leave blank the allowed IP boxes in Google Dev Console)
-var userEmail = "YOUR_ADDRESS@gmail.com"; //your calendar Id
-var userTimeZone = "YOUR_TIME_ZONE_HERE"; //example "Rome" "Los_Angeles" ecc...
-var maxRows = 10; //events to shown
-var calName = "YOUR CALENDAR NAME"; //name of calendar (write what you want, doesn't matter)
+<!-- JQuery -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-var scopes = 'https://www.googleapis.com/auth/calendar';
+   <script type="text/javascript">
 
-//--------------------- Add a 0 to numbers
-function padNum(num) {
-    if (num <= 9) {
-        return "0" + num;
-    }
-    return num;
-}
-//--------------------- end
+     // Your Client ID can be retrieved from your project in the Google
+     // Developer Console, https://console.developers.google.com
+     var CLIENT_ID = '';
+     var API_KEY = 'AIzaSyB9PFu0aUoTHjQqOcUluglt8S2gmB62vP8'
+     var CAL_ID = 'https://calendar.google.com/calendar/embed?title=Saint+Peter%27s+Prep+Calendar&height=600&wkst=1&bgcolor=%23FFFFFF&src=144grand@gmail.com&color=%23A32929&src=j2u1oqdhka8e0v1o4p5t6avcjk@group.calendar.google.com&color=%236E6E41&src=j62aodeshq58d2u3la7pi9b8os@group.calendar.google.com&color=%230D7813&src=4pjksvuk9if0th7fa6tp1ainoo@group.calendar.google.com&color=%2329527A&ctz=America/New_York'
+     var SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
 
-//--------------------- From 24h to Am/Pm
-function AmPm(num) {
-    if (num <= 12) { return "am " + num; }
-    return "pm " + padNum(num - 12);
-}
-//--------------------- end
 
-//--------------------- num Month to String
-function monthString(num) {
-         if (num === "01") { return "JAN"; }
-    else if (num === "02") { return "FEB"; }
-    else if (num === "03") { return "MAR"; }
-    else if (num === "04") { return "APR"; }
-    else if (num === "05") { return "MAJ"; }
-    else if (num === "06") { return "JUN"; }
-    else if (num === "07") { return "JUL"; }
-    else if (num === "08") { return "AUG"; }
-    else if (num === "09") { return "SEP"; }
-    else if (num === "10") { return "OCT"; }
-    else if (num === "11") { return "NOV"; }
-    else if (num === "12") { return "DEC"; }
-}
-//--------------------- end
+     /**
+      * Load Google Calendar client library. List upcoming events
+      * once client library is loaded.
+      */
+     function loadCalendarApi() {
+       gapi.client.setApiKey(API_KEY);
+       gapi.client.load('calendar', 'v3', listUpcomingEvents);
+     }
 
-//--------------------- from num to day of week
-function dayString(num){
-         if (num == "1") { return "mon" }
-    else if (num == "2") { return "tue" }
-    else if (num == "3") { return "wed" }
-    else if (num == "4") { return "thu" }
-    else if (num == "5") { return "fri" }
-    else if (num == "6") { return "sat" }
-    else if (num == "0") { return "sun" }
-}
-//--------------------- end
+     /**
+      * Print the summary and start datetime/date of the next ten events in
+      * the authorized user's calendar. If no events are found an
+      * appropriate message is printed.
+      */
+     function listUpcomingEvents() {
+       var request = gapi.client.calendar.events.list({
+         'calendarId': CAL_ID,
+         'timeMin': (new Date()).toISOString(),
+         'showDeleted': false,
+         'singleEvents': true,
+         'maxResults': 10,
+         'orderBy': 'startTime'
+       });
 
-//--------------------- client CALL
-function handleClientLoad() {
-    gapi.client.setApiKey(apiKey);
-    checkAuth();
-}
-//--------------------- end
+       request.execute(function(resp) {
+         var events = resp.items;
+         appendPre('Upcoming events:');
 
-//--------------------- check Auth
-function checkAuth() {
-    gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true}, handleAuthResult);
-}
-//--------------------- end
+         if (events.length > 0) {
+           for (i = 0; i < events.length; i++) {
+             var event = events[i];
+             var when = event.start.dateTime;
+             if (!when) {
+               when = event.start.date;
+             }
+             appendPre(event.summary + ' (' + when + ')')
+           }
+         } else {
+           appendPre('No upcoming events found.');
+         }
 
-//--------------------- handle result and make CALL
-function handleAuthResult(authResult) {
-    if (authResult) {
-        makeApiCall();
-    }
-}
-//--------------------- end
+       });
+     }
 
-//--------------------- API CALL itself
-function makeApiCall() {
-    var today = new Date(); //today date
-    gapi.client.load('calendar', 'v3', function () {
-        var request = gapi.client.calendar.events.list({
-            'calendarId' : userEmail,
-            'timeZone' : userTimeZone,
-            'singleEvents': true,
-            'timeMin': today.toISOString(), //gathers only events not happened yet
-            'maxResults': maxRows,
-            'orderBy': 'startTime'});
-    request.execute(function (resp) {
-            for (var i = 0; i < resp.items.length; i++) {
-                var li = document.createElement('li');
-                var item = resp.items[i];
-                var classes = [];
-                var allDay = item.start.date? true : false;
-                var startDT = allDay ? item.start.date : item.start.dateTime;
-                var dateTime = startDT.split("T"); //split date from time
-                var date = dateTime[0].split("-"); //split yyyy mm dd
-                var startYear = date[0];
-                var startMonth = monthString(date[1]);
-                var startDay = date[2];
-                var startDateISO = new Date(startMonth + " " + startDay + ", " + startYear + " 00:00:00");
-                var startDayWeek = dayString(startDateISO.getDay());
-                if( allDay == true){ //change this to match your needs
-                    var str = [
-                    '<font size="4" face="courier">',
-                    startDayWeek, ' ',
-                    startMonth, ' ',
-                    startDay, ' ',
-                    startYear, '</font><font size="5" face="courier"> @ ', item.summary , '</font><br><br>'
-                    ];
-                }
-                else{
-                    var time = dateTime[1].split(":"); //split hh ss etc...
-                    var startHour = AmPm(time[0]);
-                    var startMin = time[1];
-                    var str = [ //change this to match your needs
-                        '<font size="4" face="courier">',
-                        startDayWeek, ' ',
-                        startMonth, ' ',
-                        startDay, ' ',
-                        startYear, ' - ',
-                        startHour, ':', startMin, '</font><font size="5" face="courier"> @ ', item.summary , '</font><br><br>'
-                        ];
-                }
-                li.innerHTML = str.join('');
-                li.setAttribute('class', classes.join(' '));
-                document.getElementById('events').appendChild(li);
-            }
-        document.getElementById('updated').innerHTML = "updated " + today;
-        document.getElementById('calendar').innerHTML = calName;
-        });
-    });
-}
-//--------------------- end
-</script>
+     /**
+      * Append a pre element to the body containing the given message
+      * as its text node.
+      *
+      * @param {string} message Text to be placed in pre element.
+      */
+     function appendPre(message) {
+       var pre = document.getElementById('output');
+       var textContent = document.createTextNode(message + '\n');
+       pre.appendChild(textContent);
+     }
+
+   </script>
+   <script src="https://apis.google.com/js/client.js?onload=loadCalendarApi">
+   </script>
