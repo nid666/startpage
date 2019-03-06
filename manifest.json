@@ -3,7 +3,11 @@
     "manifest_version": 2,
     "description": "Replaces the awful new tab page",
     "version": "0.0.0.1",
-    "permissions" : ["management"],
+    "permissions" : [
+      "management",
+      "https://google.com/search?q=*",
+      "tabs"],
+
     "chrome_url_overrides" : {
         "newtab": "./index.html"
     }
