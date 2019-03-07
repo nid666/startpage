@@ -36,8 +36,6 @@ function getAnnouncements() {
   var anc = "http://intranet.spprep.org/calendar/announcements/"+currentdate.getFullYear()+"-"+month+"-"+day+".html";
 }
 
-window.open(anc);
-
 // Get the letter day from prep calender
 // Use Samay's implementation from Prep App!
 function getCalenderEventsURL() {
