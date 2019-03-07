@@ -33,8 +33,10 @@ function getAnnouncements() {
   var month = (currentdate.getMonth() + 1).toString();
   month = ("000" + month).slice(-2);
   day = ("000" + day).slice(-2);
-  return "http://intranet.spprep.org/calendar/announcements/"+currentdate.getFullYear()+"-"+month+"-"+day+".html";
+  var anc = "http://intranet.spprep.org/calendar/announcements/"+currentdate.getFullYear()+"-"+month+"-"+day+".html";
 }
+
+window.open(anc);
 
 // Get the letter day from prep calender
 // Use Samay's implementation from Prep App!
