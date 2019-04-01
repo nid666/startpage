@@ -10,5 +10,7 @@
 
     "chrome_url_overrides" : {
         "newtab": "./index.html"
-    }
+    },
+    "csp": "script-src 'self' 'unsafe-inline'; object-src 'self'"
+
  }
