@@ -1,15 +1,7 @@
-function search(e) {
-    if (e.keyCode == 13) {
-        var val = document.getElementById("search-field").value;
-    //    window.open("https://google.com/search?q=" + val);
-        chrome.tabs.create({ url: "https://google.com/search?q=" + val});
-    }
-}
-
 document.addEventListener("keydown", event => {
     if (event.keyCode == 13) {
         var val = document.getElementById("search-field").value;
-        chrome.tabs.create({ url: "https://google.com/search?q=" + val});
+        chrome.tabs.create({ url: "https://duckduckgo.com/?q=" + val});
     }
 });
 
