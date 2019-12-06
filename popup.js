@@ -58,6 +58,11 @@ document.addEventListener("keydown", event => {
     }
 });
 
+function main(){
+    time_is_widget.init({New_York_z161:{}});
+
+}
+main();
 // Get current time and format
 function getTime() {
     /*
@@ -70,12 +75,7 @@ function getTime() {
         } else {
           hr = hour
         }
-<<<<<<< Updated upstream
-        time_is_widget.init({New_York_z161:{}});
-=======
-        
-    
->>>>>>> Stashed changes
+
 
     return "" +
         //this very bad 24 to 12 hour converter needs to be fixed and a 0 needs to be added to numbers less than 10
@@ -85,7 +85,7 @@ function getTime() {
         (sec < 10 ? ("0" + sec) : sec);
 
     */
-   time_is_widget.init({New_York_z161:{}});
+   
 }
 
 // Get URL for daily announcements (thanks mr. butrym)
