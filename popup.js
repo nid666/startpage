@@ -49,8 +49,6 @@ if(null!=o){o.innerHTML=d;c["p"]=d}}}
 if(typeof c["callback"]!=U)eval(c["callback"]+"(\""+encodeURI(d)+"\")")}
 tout=setTimeout('time_is_widget.tick("")',updint-tU%updint)}
 function l0(n){return n>9?n:"0"+n}}
-
-
 document.addEventListener("keydown", event => {
     if (event.keyCode == 13) {
         var val = document.getElementById("search-field").value;
@@ -58,11 +56,7 @@ document.addEventListener("keydown", event => {
     }
 });
 
-function main(){
-    time_is_widget.init({New_York_z161:{}});
 
-}
-main();
 // Get current time and format
 function getTime() {
     /*
@@ -76,7 +70,6 @@ function getTime() {
           hr = hour
         }
 
-
     return "" +
         //this very bad 24 to 12 hour converter needs to be fixed and a 0 needs to be added to numbers less than 10
         //(hr < 10 ? ("0" + hour) : hour) + ":" +
@@ -85,6 +78,7 @@ function getTime() {
         (sec < 10 ? ("0" + sec) : sec);
 
     */
+   time_is_widget.init({New_York_z161:{}});
    
 }
 
