@@ -79,9 +79,9 @@ function getTime() {
         (min < 10 ? ("0" + min) : min) + ":" +
         (sec < 10 ? ("0" + sec) : sec);
 
-    
+       */
    time_is_widget.init({New_York_z161:{}});
-   
+
 }
 
 // Get URL for daily announcements (thanks mr. butrym)
