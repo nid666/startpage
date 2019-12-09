@@ -49,12 +49,8 @@ if(null!=o){o.innerHTML=d;c["p"]=d}}}
 if(typeof c["callback"]!=U)eval(c["callback"]+"(\""+encodeURI(d)+"\")")}
 tout=setTimeout('time_is_widget.tick("")',updint-tU%updint)}
 function l0(n){return n>9?n:"0"+n}}
-<<<<<<< Updated upstream
-=======
 
 
-time_is_widget.init({New_York_z161:{}});
->>>>>>> Stashed changes
 document.addEventListener("keydown", event => {
     if (event.keyCode == 13) {
         var val = document.getElementById("search-field").value;
@@ -85,11 +81,7 @@ function getTime() {
 
     
    time_is_widget.init({New_York_z161:{}});
-<<<<<<< Updated upstream
    
-=======
-   */
->>>>>>> Stashed changes
 }
 
 // Get URL for daily announcements (thanks mr. butrym)
