@@ -70,12 +70,6 @@ function getTime() {
         } else {
           hr = hour
         }
-<<<<<<< Updated upstream
-        time_is_widget.init({New_York_z161:{}});
-=======
-        
-    
->>>>>>> Stashed changes
 
     return "" +
         //this very bad 24 to 12 hour converter needs to be fixed and a 0 needs to be added to numbers less than 10
