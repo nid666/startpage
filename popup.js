@@ -6,10 +6,41 @@ document.addEventListener("keydown", event => {
     }
 });
 
+var xmlHttp;
+function srvTime(){
+    try {
+        //FF, Opera, Safari, Chrome
+        xmlHttp = new XMLHttpRequest();
+    }
+    catch (err1) {
+        //IE
+        try {
+            xmlHttp = new ActiveXObject('Msxml2.XMLHTTP');
+        }
+        catch (err2) {
+            try {
+                xmlHttp = new ActiveXObject('Microsoft.XMLHTTP');
+            }
+            catch (eerr3) {
+                //AJAX not supported, use CPU time.
+                alert("AJAX not supported");
+            }
+        }
+    }
+    xmlHttp.open('HEAD',window.location.href.toString(),false);
+    xmlHttp.setRequestHeader("Content-Type", "text/html");
+    xmlHttp.send('');
+    return xmlHttp.getResponseHeader("Date");
+}
+
+var st = srvTime();
+var date = new Date(st);
 
 // Get current time and format
-function getTime() {
 
+function getTime() {
+    return date;
+/*
     let date = new Date(),
         min = ServerDate.getMinutes(),
         sec = ServerDate.getSeconds(),
@@ -28,7 +59,7 @@ function getTime() {
         (min < 10 ? ("0" + min) : min) + ":" +
         (sec < 10 ? ("0" + sec) : sec);
 
-
+*/
 
 }
 
@@ -83,15 +114,15 @@ window.onload = () => {
         }
     }
     xhr.send();
-    
+   
     // Set up the clock
     document.getElementById("clock").innerHTML = getTime();
     // Set clock interval to tick clock
+    
     setInterval( () => {
         document.getElementById("clock").innerHTML = getTime();
     
     },100);
-	
 }
 
 document.addEventListener("keydown", event => {
