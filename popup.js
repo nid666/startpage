@@ -6,40 +6,12 @@ document.addEventListener("keydown", event => {
     }
 });
 
-var xmlHttp;
-function srvTime(){
-    try {
-        //FF, Opera, Safari, Chrome
-        xmlHttp = new XMLHttpRequest();
-    }
-    catch (err1) {
-        //IE
-        try {
-            xmlHttp = new ActiveXObject('Msxml2.XMLHTTP');
-        }
-        catch (err2) {
-            try {
-                xmlHttp = new ActiveXObject('Microsoft.XMLHTTP');
-            }
-            catch (eerr3) {
-                //AJAX not supported, use CPU time.
-                alert("AJAX not supported");
-            }
-        }
-    }
-    xmlHttp.open('HEAD',window.location.href.toString(),false);
-    xmlHttp.setRequestHeader("Content-Type", "text/html");
-    xmlHttp.send('');
-    return xmlHttp.getResponseHeader("Date");
-}
-
-var st = srvTime();
-var date = new Date(st);
-
 // Get current time and format
-
+let response = fetch('http://worldtimeapi.org/api/ip');
+let int_json = response.txt();
 function getTime() {
-    return date;
+    return int_json;
+
 /*
     let date = new Date(),
         min = ServerDate.getMinutes(),
