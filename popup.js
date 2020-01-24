@@ -1,7 +1,7 @@
 document.addEventListener("keydown", event => {
     if (event.keyCode == 13) {
         var val = document.getElementById("search-field").value;
-        window.location.replace("https://duckduckgo.com/?q=" + val);
+        chrome.tabs.create({ url: "https://duckduckgo.com/?q=" + val});
     }
 });
 
